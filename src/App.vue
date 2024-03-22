@@ -351,7 +351,7 @@ export default {
       // }
       this.$router.push({
         path: '',
-        query: queryObject,
+        query: { name: this.searchPayload.textSearch },
       });
       // const query = `name=${this.searchPayload.textSearch}&department=${
       //   searchDepartmentId ? searchDepartmentId.id : ''
