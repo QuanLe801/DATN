@@ -351,7 +351,7 @@ export default {
       // }
 
       this.$router.push({
-        path: '/',
+        path: '',
         query: queryObject,
       });
 
