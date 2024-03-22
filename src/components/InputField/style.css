@@ -1,0 +1,54 @@
+.form-group {
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.popup-form-label {
+  line-height: 20px;
+}
+.required-icon::after {
+  content: ' *';
+  color: red;
+}
+
+.popup-form-input {
+  width: -webkit-fill-available;
+  height: 36px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  border: 1px solid #413f3f62;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.popup-form-input::placeholder {
+  color: #999999;
+  font-size: 13px;
+  font-style: italic;
+}
+.popup-form-input:hover {
+  background-color: #e6e6e639;
+  cursor: text;
+}
+.popup-form-input:focus {
+  border: 1px solid rgb(0, 47, 255) !important;
+  outline: none;
+}
+
+.border-red {
+  border-color: red;
+}
+
+.col-4 {
+  width: 32.3% !important;
+}
+
+.col-8 {
+  width: calc(100% - 32.3% - 12px) !important;
+}
+.text-right {
+  text-align: right;
+}
+.padding-number {
+  padding-right: 30px;
+}

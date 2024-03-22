@@ -1,0 +1,45 @@
+select {
+  padding-left: 12px;
+  width: 100%;
+  font-size: 12px !important;
+  height: 36px;
+  border-radius: 4px;
+  margin-top: 5px;
+  -webkit-appearance: none;
+  background-image: url('../../assets/icon/arrow-down.png');
+  background-repeat: no-repeat;
+  background-size: 8px 8px;
+  background-position: 95%;
+  border: 1px solid #413f3f62;
+  overflow: hidden;
+}
+.border-red {
+  border: 1px solid red;
+}
+
+.select {
+  border-radius: 2.5px;
+  margin-right: 11px;
+  font-style: italic;
+}
+.select.filter-input {
+  padding-left: 38px;
+  width: 219px;
+  height: 35px;
+  margin-top: 13px;
+}
+.select.filter-input:required:invalid {
+  color: #212121;
+  font-style: normal;
+}
+
+select:required:invalid {
+  color: gray;
+  font-style: italic;
+  font-size: 13px;
+}
+option {
+  color: black;
+  font-style: normal;
+  font-size: 13px;
+}

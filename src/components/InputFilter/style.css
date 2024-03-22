@@ -1,0 +1,35 @@
+.form-label {
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+  font-weight: 500;
+  font-size: 12px !important;
+}
+
+.form-input {
+  width: 180px;
+  height: 35px;
+  border-radius: 2.5px;
+  border: 1px solid #afafaf;
+  margin-top: 13px;
+  margin-right: 11px;
+  overflow: hidden;
+  padding-left: 40px;
+  box-sizing: border-box;
+  font-size: 13px !important;
+}
+.form-input::placeholder {
+  color: #999999;
+  font-size: 13px !important;
+  font-style: italic;
+}
+.form-input:hover {
+  border: 1px solid rgb(0, 145, 255) !important;
+  /* color: #afafaf !important; */
+  cursor: pointer;
+}
+.form-input:focus {
+  border: 1px solid rgb(0, 145, 255);
+  outline: none;
+  color: black;
+}

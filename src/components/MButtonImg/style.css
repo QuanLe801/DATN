@@ -1,0 +1,27 @@
+.sub-btn {
+  border-radius: 3px;
+  background-color: white;
+  width: 36px;
+  border: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  margin-left: 11px;
+  display: block;
+  height: 36px;
+}
+.clone {
+  background: url('../../assets/icon/qlts-icon.svg') no-repeat -285px -102px;
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.delete {
+  background: url('../../assets/icon/qlts-icon.svg') no-repeat -461px -102px;
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+.disabled {
+  background-color: rgba(128, 128, 128, 0);
+}
