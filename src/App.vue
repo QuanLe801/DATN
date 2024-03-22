@@ -329,13 +329,13 @@ export default {
     },
 
     filterData() {
-      const searchDepartmentId = this.selectPartOptions.filter((item) => {
-        if (item.name === this.searchPayload.searchDepartment) return item;
-      })[0];
+      // const searchDepartmentId = this.selectPartOptions.filter((item) => {
+      //   if (item.name === this.searchPayload.searchDepartment) return item;
+      // })[0];
 
-      const searchTypesId = this.selectTypeOptions.filter((item) => {
-        if (item.name === this.searchPayload.searchType) return item;
-      })[0];
+      // const searchTypesId = this.selectTypeOptions.filter((item) => {
+      //   if (item.name === this.searchPayload.searchType) return item;
+      // })[0];
 
       let queryObject = {};
 
@@ -343,15 +343,15 @@ export default {
       if (this.searchPayload.textSearch !== null) {
         queryObject['name'] = this.searchPayload.textSearch;
       }
-      if (searchDepartmentId !== null) {
-        queryObject['department'] = searchDepartmentId;
-      }
-      if (searchTypesId !== null) {
-        queryObject['type'] = searchTypesId;
-      }
+      // if (searchDepartmentId !== null) {
+      //   queryObject['department'] = searchDepartmentId;
+      // }
+      // if (searchTypesId !== null) {
+      //   queryObject['type'] = searchTypesId;
+      // }
 
       this.$router.push({
-        path: '/search',
+        path: '/',
         query: queryObject,
       });
 
