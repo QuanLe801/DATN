@@ -349,12 +349,10 @@ export default {
       // if (searchTypesId !== null) {
       //   queryObject['type'] = searchTypesId;
       // }
-
       this.$router.push({
         path: '',
         query: queryObject,
       });
-
       // const query = `name=${this.searchPayload.textSearch}&department=${
       //   searchDepartmentId ? searchDepartmentId.id : ''
       // }&type=${searchTypesId ? searchTypesId.id : ''}`;
