@@ -351,7 +351,7 @@ export default {
 
     searchData() {
       if (Object.keys(this.$route.query).length !== 0) {
-        const query = `name=${this.$route.query.name}&department=${
+        const query = `id=${this.$route.query.id}&department=${
           this.$route.query.department !== undefined
             ? this.$route.query.department
             : ''
