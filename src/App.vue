@@ -351,7 +351,6 @@ export default {
 
     searchData() {
       if (Object.keys(this.$route.query).length !== 0) {
-        console.log(this.$route.query);
         const query = `name=${this.$route.query.name}&department=${
           this.$route.query.department !== undefined
             ? this.$route.query.department
@@ -387,7 +386,7 @@ export default {
 
       // Kiểm tra và thêm các tham số query vào đối tượng query nếu điều kiện đúng
       if (this.searchPayload.textSearch !== null) {
-        queryObject['name'] = this.searchPayload.textSearch;
+        queryObject['id'] = this.searchPayload.textSearch;
       }
       // if (searchDepartmentId !== null) {
       //   queryObject['department'] = searchDepartmentId;
