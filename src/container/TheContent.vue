@@ -35,20 +35,17 @@
       </div>
       <div class="action">
         <TheButton
+          class="action_1"
           :variant="true"
           title="+ Thêm tài sản"
           @click.native="showPopup"
         ></TheButton>
-        <TheButtonImg
-          title="Sao lưu"
-          clone
-          :dataCount="listItemDel.length"
-        ></TheButtonImg>
-        <TheButtonImg
-          title="Xóa"
-          @click.native="showDeleteDialog"
-          :dataCount="listItemDel.length"
-        ></TheButtonImg>
+        <TheButton
+          class="action_1"
+          :variant="true"
+          title="+ Sao lưu"
+          @click.native="showPopup"
+        ></TheButton>
       </div>
     </div>
     <TheTable
@@ -76,7 +73,6 @@
 import InputFilter from '../components/InputFilter/InputFilter.vue';
 import InputSelectFilter from '../components/InputSelectFilter/InputSelectFilter.vue';
 import TheButton from '../components/MButton/MButton.vue';
-import TheButtonImg from '../components/MButtonImg/MButtonImg.vue';
 import TheTable from '../components/MTable/MTable.vue';
 import axios from 'axios';
 import MISAEnum from '@/helper/enum';
@@ -88,7 +84,6 @@ export default {
     InputFilter,
     InputSelectFilter,
     TheButton,
-    TheButtonImg,
     TheTable,
     MDialog,
   },
@@ -267,6 +262,9 @@ export default {
   justify-content: center;
   display: flex;
   margin-top: 13px;
+}
+.action_1 {
+  margin-left: 6px;
 }
 .group-action {
   display: flex;

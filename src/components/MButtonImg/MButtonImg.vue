@@ -1,14 +1,15 @@
 <template>
-  <button class="sub-btn" :disabled="isEmpty" :class="{ disabled: isEmpty }">
+  <!-- <button class="sub-btn" :disabled="isEmpty" :class="{ disabled: isEmpty }">
     <span :class="[clone ? 'clone' : 'delete']"></span>
-  </button>
+  </button> -->
+  <div>123</div>
 </template>
 <script>
 export default {
   name: 'TheButtonImg',
   props: {
-    clone: Boolean,
-    dataCount: Number,
+    // clone: Boolean,
+    // dataCount: Number,
   },
   computed: {
     isEmpty() {

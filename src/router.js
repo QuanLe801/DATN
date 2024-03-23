@@ -1,16 +1,16 @@
 import Vue from 'vue';
 //Dòng này để import vue-router
-import createRouter from 'vue-router';
-import App from './App.vue';
+import Router from 'vue-router';
 
-Vue.use(createRouter);
+Vue.use(Router);
 
-export default new createRouter({
+export default new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      component: App,
+      name: 'Content',
+      component: () => import('./container/TheContent.vue'),
     },
   ],
 });

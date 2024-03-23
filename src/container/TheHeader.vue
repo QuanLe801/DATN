@@ -15,20 +15,72 @@
       <div class="header-btn">
         <span class="img quest"></span>
       </div>
-      <div class="header-btn">
-        <span class="img profile" style="margin-right: 12px"></span>
-        <img
-          class="sub-img"
-          src="../assets/icon/arrow-down.png"
-          width="9px"
-          height="12px"
-        />
+      <div v-if="!isLogin" class="header-btn">
+        <TheButton
+          :variant="true"
+          title="Đăng nhập"
+          @click.native="showPopupLogin"
+        ></TheButton>
       </div>
+      <b-dropdown
+        @click.native="logout"
+        v-else
+        id="dropdown-1"
+        :text="'xin chào ' + [profile.display_name]"
+        class="header-btn btn_profile"
+        offset="-25"
+      >
+        <b-dropdown-item>
+          <img
+            class="sub-img"
+            src="../assets/icon/image.png"
+            width="25px"
+            height="25px"
+          />
+          <span style="margin-left: 6px">Đăng xuất</span>
+        </b-dropdown-item>
+      </b-dropdown>
     </div>
   </header>
 </template>
-<script></script>
+<script>
+import TheButton from '../components/MButton/MButton.vue';
+
+export default {
+  name: 'TheHeader',
+  components: {
+    TheButton,
+  },
+  props: {
+    isLogin: Boolean,
+    profile: Object,
+    isShowPopupLogin: Boolean,
+  },
+  methods: {
+    showPopupLogin() {
+      this.$emit('showPopupLogin');
+    },
+    logout() {
+      localStorage.removeItem('userData');
+      this.$emit('logout');
+    },
+  },
+};
+</script>
 <style>
+.btn_profile .btn-secondary {
+  border: none;
+  font-weight: 500;
+  background-color: #1aa4c8;
+  color: #fff;
+}
+.btn_profile:hover .btn-secondary {
+  background: #1489a6;
+}
+
+.btn_profile:focus .btn-secondary {
+  /* outline: 3px solid #1489a6; */
+}
 .header {
   display: flex;
   justify-content: space-between;

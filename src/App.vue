@@ -5,7 +5,12 @@
     </div>
     <SideBar></SideBar>
     <div class="content">
-      <TheHeader></TheHeader>
+      <TheHeader
+        :isLogin="isLogin"
+        @showPopupLogin="showPopupLogin"
+        :profile="profile"
+        @logout="logout"
+      ></TheHeader>
       <TheContent
         :data="data"
         @showPopup="showPopup"
@@ -40,6 +45,13 @@
       :listItem="listItem"
       @reloadListItemDel="reloadListItemDel"
     ></ThePopup>
+    <ThePopupLogin
+      @isLoginSucc="isLoginSucc"
+      :username="user.username"
+      :password="user.password"
+      v-if="isShowPopupLogin"
+      @hiddenPopupLogin="hiddenPopupLogin"
+    ></ThePopupLogin>
   </div>
 </template>
 
@@ -51,6 +63,7 @@ import ThePopup from './components/MPopup/MPopup.vue';
 import axios from 'axios';
 import MISAEnum from './helper/enum';
 import commonJS from './helper/common';
+import ThePopupLogin from './components/MLogin/MLogin.vue';
 // import { createRouter, createMemoryHistory } from 'vue-router';
 
 export default {
@@ -60,13 +73,18 @@ export default {
     TheContent,
     SideBar,
     ThePopup,
+    ThePopupLogin,
   },
   data() {
     return {
+      profile: null,
+      isLogin: false,
+      user: {},
       listItem: [],
       formMode: '',
       data: null,
       isShowPopup: false,
+      isShowPopupLogin: false,
       isEmptyInput: false,
       defaultPage: 1,
       defaultPageSize: 999,
@@ -89,6 +107,7 @@ export default {
       selectPartOptions: null,
       selectTypeOptions: null,
       payload: {},
+      payloadLogin: {},
       searchPayload: {
         textSearch: '',
         searchType: '',
@@ -154,8 +173,21 @@ export default {
           console.log(error);
         });
     }
+    // Đọc dữ liệu từ Local Storage
+    const userDataJSON = localStorage.getItem('userData');
+
+    // Chuyển đổi dữ liệu từ chuỗi JSON thành đối tượng JavaScript
+    this.profile = JSON.parse(userDataJSON);
+    if (this.profile !== null) {
+      this.isLogin = true;
+    }
   },
   watch: {
+    $profile() {
+      if (this.profile !== null) {
+        this.isLogin = true;
+      } else this.isLogin = false;
+    },
     $route() {
       this.searchData();
     },
@@ -182,6 +214,13 @@ export default {
     },
   },
   methods: {
+    logout() {
+      this.isLogin = false;
+    },
+    isLoginSucc(data) {
+      this.profile = data;
+      this.isLogin = true;
+    },
     /**
      * Author:Quân
      *toggle select để xóa
@@ -230,6 +269,10 @@ export default {
       this.isShowPopup = true;
       this.formMode = MISAEnum.formMode.add;
     },
+    showPopupLogin() {
+      console.log(this.isShowPopupLogin);
+      this.isShowPopupLogin = true;
+    },
     /**
      * Author:Quân
      * description:tải lại trang sau khi thực hiện CRUD
@@ -269,6 +312,9 @@ export default {
      */
     hiddenPopup() {
       this.isShowPopup = false;
+    },
+    hiddenPopupLogin() {
+      this.isShowPopupLogin = false;
     },
     /**
      * Author:Quân
@@ -351,6 +397,7 @@ export default {
       // }
       this.$router.push({
         path: '',
+        params: this.searchPayload.textSearch,
         query: { name: this.searchPayload.textSearch },
       });
       // const query = `name=${this.searchPayload.textSearch}&department=${
@@ -399,4 +446,3 @@ export default {
   left: 50%;
 }
 </style>
-import { from } from 'core-js/core/array';

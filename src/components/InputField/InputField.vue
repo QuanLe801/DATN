@@ -8,6 +8,7 @@
       >{{ title }}
     </label>
     <input
+      :type="[typePassword ? 'password' : 'text']"
       autocomplete="off"
       :maxlength="maxlength"
       @keypress="handleKeyDown"
@@ -43,6 +44,10 @@
 export default {
   name: 'InputField',
   props: {
+    typePassword: {
+      type: Boolean,
+      default: false, // Giá trị mặc định cho prop type là false
+    },
     title: String,
     lg: Boolean,
     placeholder: String,
