@@ -113,10 +113,13 @@ export default {
         searchType: '',
         searchDepartment: '',
       },
+      queryParamsLength: 0,
     };
   },
   mounted() {},
   created() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.size;
     /**
      * Author:Quân
      * description:thêm sự kiện key down cho body
@@ -156,10 +159,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-
-    if (Object.keys(this.$route.query).length !== 0) {
-      this.searchData();
-    } else {
+    if (idParam === 0) {
       axios
         .get(`${MISAEnum.api.baseUrl}/Assets/`)
         .then((data) => {
@@ -173,6 +173,7 @@ export default {
           console.log(error);
         });
     }
+
     // Đọc dữ liệu từ Local Storage
     const userDataJSON = localStorage.getItem('userData');
 
@@ -184,17 +185,22 @@ export default {
   },
   watch: {
     $profile() {
+      this.queryParamsLength = Object.keys(this.$route.query).length;
       if (this.profile !== null) {
         this.isLogin = true;
       } else this.isLogin = false;
     },
+
     $route() {
+      const regex = /\D/g;
+      let check_id = this.$route.query.id.replace(regex, '');
+
+      if (check_id !== this.$route.query.id) {
+        return;
+      }
       this.searchData();
     },
-    /**
-     * Author:Quân
-     * description:xem sự thay đổi page hiện tại và reload lại data theo trang
-     */
+
     defaultPage(value) {
       axios
         .get(
@@ -288,7 +294,6 @@ export default {
           response.data.map((value) => {
             value.purchaseDate = commonJS.formatDate(value.purchaseDate);
             value.dayStartedUsing = commonJS.formatDate(value.dayStartedUsing);
-
             /**
              * Author:Quân
              * description:ghim data nếu sửa hoặc thêm
